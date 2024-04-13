@@ -13,32 +13,32 @@ const boxesEl = document.querySelector('#boxes');
 function createBoxes(amount) {
   let boxSize = 30;
   boxesEl.innerHTML = '';
+  const boxesArray = [];
 
-  for (let i = 0; i < amount; i += 1) {
-    const box = document.createElement('div');
-    box.style.width = `${boxSize}px`;
-    box.style.height = `${boxSize}px`;
-    box.style.backgroundColor = getRandomHexColor();
-    boxesEl.appendChild(box);
-    boxSize += 10;
+  if (amount >= 1 && amount <= 100) {
+    for (let i = 0; i < amount; i += 1) {
+      const box = document.createElement('div');
+      box.style.width = `${boxSize}px`;
+      box.style.height = `${boxSize}px`;
+      box.style.backgroundColor = getRandomHexColor();
+      boxesArray.push(box);
+      boxSize += 10;
+      inputEl.value = '';
+    }
   }
+  boxesEl.append(...boxesArray);
 }
 
 function handleCreate() {
   const amount = parseInt(inputEl.value);
   if (amount >= 1 && amount <= 100) {
     createBoxes(amount);
-    inputEl.value = '';
   }
-}
-
-function handleDestroy() {
-  destroyBoxes();
 }
 
 function destroyBoxes() {
   boxesEl.innerHTML = '';
+  inputEl.value = '';
 }
-
 btnCreateEl.addEventListener('click', handleCreate);
-btnDestroyEl.addEventListener('click', handleDestroy);
+btnDestroyEl.addEventListener('click', destroyBoxes);

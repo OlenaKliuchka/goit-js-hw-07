@@ -24,3 +24,10 @@ body {
   margin-right: 20px;
   margin-bottom: 20px;
 }
+
+/* const box = document.createElement('div');
+    box.style.width = `${boxSize}px`;
+    box.style.height = `${boxSize}px`;
+    box.style.backgroundColor = getRandomHexColor();
+    boxesEl.appendChild(box);
+    boxSize += 10; */
